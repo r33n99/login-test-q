@@ -34,6 +34,11 @@ const Title = styled.div`
   font-size: 40px;
   line-height: 48px;
   margin-bottom: 50px;
+  @media (max-width: 425px) {
+    width: 350px;
+    font-size:18px;
+    text-align:center;
+}
 `;
 
 const ButtonLogout = styled.button`

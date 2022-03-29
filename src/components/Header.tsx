@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 export const Header = () => {
   return (
-    <OnlyContainer>
+    <HeaderContainer>
       <p>ONLY.</p>
-    </OnlyContainer>
+    </HeaderContainer>
   );
 };
 
-const OnlyContainer = styled.div`
+const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,5 +18,8 @@ const OnlyContainer = styled.div`
     font-weight: 700;
     font-size: 64px;
     line-height: 78px;
+    @media (max-width: 425px) {
+    font-size: 48px;
+}
   }
 `;

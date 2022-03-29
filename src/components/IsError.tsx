@@ -32,4 +32,9 @@ const ErrorMessage = styled.div`
   height: 60px;
   background: #f5e9e9;
   border-radius: 8px;
+  @media (max-width: 425px) {
+    width: 350px;
+    font-size:15px;
+    text-align:center;
+}
 `;

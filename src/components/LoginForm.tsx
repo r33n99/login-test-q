@@ -56,7 +56,7 @@ export const LoginForm = () => {
         reset();
       }, 1000);
     } catch (e) {
-      console.log(e);
+      alert(e);
     }
   };
   return (
@@ -67,19 +67,17 @@ export const LoginForm = () => {
           <FormLabel>
             Логин
             <FormInput
-              className={errors ? "error" : ""}
               type="email"
               placeholder="Email"
-              {...register("Email", { required: "Обязательное поле" })}
+              {...register("Email", { required: "Обязательное поле", pattern: /^\S+@\S+$/i})}
             />
           </FormLabel>
           <FormError>
-            {errors?.Email && <p>{errors?.Email?.message || "Error"}</p>}
+            {errors?.Email && <p>{errors?.Email?.message || "Некорректный email"}</p>}
           </FormError>
           <FormLabel>
             Пароль
             <FormInput
-              className={errors ? "error" : ""}
               type="password"
               placeholder="Password"
               {...register("Password", {
@@ -113,11 +111,16 @@ export const LoginForm = () => {
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  
 `;
 const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+   margin: 0 auto;
+}
+
 `;
 const Form = styled.form`
   display: flex;
@@ -131,19 +134,25 @@ const FormInput = styled.input`
   border-radius: 5px;
   border: none;
   padding: 0 20px;
+  @media (max-width: 768px) {
+    width: 450px;
+}
+@media (max-width: 425px) {
+    width: 350px;
+}
+ 
+  &:invalid {
+    border: 1px solid red;
+  }
   &:focus {
     outline: none;
-  }
-  &.error {
-    &:focus {
-      border: 1px solid red;
-    }
   }
 `;
 const FormLabel = styled.div`
   font-size: 16px;
   display: flex;
   flex-direction: column;
+
 `;
 const FormError = styled.div`
   font-size: 14px;
@@ -170,4 +179,10 @@ const FormButton = styled.button`
   height: 60px;
   border-radius: 5px;
   border: none;
+  @media (max-width: 768px) {
+    width: 450px;
+}
+@media (max-width: 425px) {
+    width: 350px;
+}
 `;
